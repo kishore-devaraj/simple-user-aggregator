@@ -41,7 +41,7 @@ tbody, tr {
 tbody {
     display: block;
     height: 70vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 tbody > tr:nth-child(even) {
@@ -50,4 +50,9 @@ tbody > tr:nth-child(even) {
 
 tbody > tr:nth-child(odd) {
     background-color: white;
+}
+
+#noUserTd {
+    display: flex;
+    justify-content: center;
 }

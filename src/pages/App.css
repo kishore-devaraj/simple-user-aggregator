@@ -28,7 +28,7 @@ body {
   margin: 0 0.5em;
 }
 
-header {
+form {
   flex: 1 1 auto;
   display: flex;
   justify-content: center;

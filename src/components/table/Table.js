@@ -1,5 +1,6 @@
 import React from 'react'
 import './Table.css'
+import * as trashIcon from '../../assets/delete.svg'
 
 class Table extends React.Component {
     render() {
@@ -15,78 +16,31 @@ class Table extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> 1 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 2 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-                        <tr>
-                            <td> 13 </td>
-                            <td> Kishore </td>
-                            <td> 10:43 PM </td>
-                            <td> Remove Name </td>
-                        </tr>
-
+                        {this.props.listOfNames.length !== 0 ?
+                            this.props.listOfNames.map((listElement, index) => 
+                                <TableRow key={listElement.user + listElement.createAt + index}
+                                    serialNo={index + 1}     
+                                {...listElement}  
+                                handleDelete={this.props.handleDelete}/>
+                            ): <tr><td id="noUserTd">No User is found</td></tr>}
                     </tbody>
                 </table>
             </section>
         )
     }
+}
+
+const TableRow = (props) => {
+    return (
+        <tr>
+            <td>{props.serialNo}</td>
+            <td>{props.user}</td>
+            <td>{props.createdAt}</td>
+            <td onClick={props.handleDelete}>
+                <img src={trashIcon} alt='Delete icon' id={props.serialNo}/>
+            </td>
+        </tr>
+    )
 }
 
 export default Table
